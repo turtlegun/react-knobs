@@ -1,54 +1,92 @@
 import React from 'react';
 
 const unselectable = {
-  '-webkit-user-select': 'none',
-  '-moz-user-select': 'none',
-  '-ms-user-select': 'none',
-  'user-select': 'none',
+  WebkitUserSelect: 'none',
+  MozUserSelect: 'none',
+  msUserSelect: 'none',
+  userSelect: 'none',
 };
 
 export default class extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDragging: false,
+      dragStartX: 0,
+      dragStartY: 0,
+    };
+  }
+  componentDidMount() {
+    document.addEventListener('mouseup', this.handleMouseUp);
+    document.addEventListener('mousemove', this.handleMouseMove);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mouseup', this.handleMouseUp);
+    document.removeEventListener('mousemove', this.handleMouseMove);
+  }
+  handleMouseDown = (event) => {
+    document.body.style.cursor = 'none';
+    this.setState({
+      isDragging: true,
+      dragStartX: event.pageX,
+      dragStartY: event.pageY,
+    });
+  }
+  handleMouseUp = (_event) => {
+    document.body.style.cursor = 'default';
+    this.setState({
+      isDragging: false
+    });
+  }
+  handleMouseMove = (event) => {
+    if (this.state.isDragging && this.props.onProgressChange) {
+      const newProgress = (30 + Math.max(-30, Math.min(30, this.state.dragStartY - event.pageY))) / 60;
+      this.props.onProgressChange(newProgress);
+    }
+  }
   render() {
-    const scale = this.props.scale || 1;
-    const progress = this.props.progress || 1;
+    const scale = this.props.scale == null ? 1 : this.props.scale;
+    const progress = this.props.progress == null ? 1 : this.props.progress;
     const size = 120 * scale;
     const strokeWidth = 12 * scale;
     const radius = size / 2 - strokeWidth / 2;
     const circumference = 2 * Math.PI * radius;
     const dashoffset = circumference * (1 - progress * 0.75);
+    const center = size / 2;
     return (
       <svg
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
+        onMouseDown={this.handleMouseDown}
       >
         <circle
           r={radius}
-          cx={size / 2}
-          cy={size / 2}
+          cx={center}
+          cy={center}
           fill="transparent"
           stroke="grey"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={circumference * 0.25}
-          transform={`rotate(135 ${size / 2} ${size / 2})`}
+          transform={`rotate(135 ${center} ${center})`}
         />
         <circle
           r={radius}
-          cx={size / 2}
-          cy={size / 2}
+          cx={center}
+          cy={center}
           fill="transparent"
           stroke="white"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={dashoffset}
-          transform={`rotate(135 ${size / 2} ${size / 2})`}
+          transform={`rotate(135 ${center} ${center})`}
         />
         <text
           x="50%"
           y="50%"
-          dominant-baseline="middle"
-          text-anchor="middle"
+          dominantBaseline="middle"
+          textAnchor="middle"
           style={{ ...unselectable }}
         >
           {Math.floor(progress * 100)}%
