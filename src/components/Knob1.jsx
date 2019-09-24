@@ -12,6 +12,7 @@ export default class extends React.Component {
     super(props);
     this.state = {
       isDragging: false,
+      dragStartProgress: 0,
       dragStartX: 0,
       dragStartY: 0,
     };
@@ -28,6 +29,7 @@ export default class extends React.Component {
     document.body.style.cursor = 'none';
     this.setState({
       isDragging: true,
+      dragStartProgress: this.props.progress,
       dragStartX: event.pageX,
       dragStartY: event.pageY,
     });
@@ -40,7 +42,9 @@ export default class extends React.Component {
   }
   handleMouseMove = (event) => {
     if (this.state.isDragging && this.props.onProgressChange) {
-      const newProgress = (30 + Math.max(-30, Math.min(30, this.state.dragStartY - event.pageY))) / 60;
+      const pivot = this.state.dragStartProgress * 60;
+      const pad = 60 - pivot;
+      const newProgress = (pivot + Math.max(-pivot, Math.min(pad, this.state.dragStartY - event.pageY))) / 60;
       this.props.onProgressChange(newProgress);
     }
   }
