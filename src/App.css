@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: auto 800px auto;
   grid-template-rows: 100px auto 60px;
-  grid-template-areas: 
+  grid-template-areas:
     ". header .     "
     ". knobs  themes"
     ". footer .     ";
@@ -12,7 +12,7 @@
 }
 
 .header {
-  grid-area: header;  
+  grid-area: header;
   place-self: center;
   text-align: center;
 }
