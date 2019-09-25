@@ -1,5 +1,5 @@
 import React from 'react';
-import Knob1 from './components/Knob1';
+import BicolorKnob from './components/BicolorKnob';
 import './App.css';
 
 export default class extends React.Component {
@@ -21,7 +21,7 @@ export default class extends React.Component {
           react-knobs-demo
       </header>
         <div className="knobs">
-          <Knob1
+          <BicolorKnob
             scale={1}
             progress={this.state.knob1Progress}
             onProgressChange={this.handleKnob1ProgressChange}
