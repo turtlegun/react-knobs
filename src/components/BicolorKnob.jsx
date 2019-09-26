@@ -49,6 +49,7 @@ export default class extends React.Component {
     }
   }
   render() {
+    const formatter = this.props.formatter || ((value) => Math.floor(value * 100) + '%');
     const scale = this.props.scale == null ? 1 : this.props.scale;
     const value = this.props.value == null ? 1 : this.props.value;
     const size = 120 * scale;
@@ -104,6 +105,7 @@ export default class extends React.Component {
         height={size}
         viewBox={`0 0 ${size} ${size}`}
         onMouseDown={this.handleMouseDown}
+        style={{ ...unselectable }}
       >
         <circle
           r={r1}
@@ -122,7 +124,7 @@ export default class extends React.Component {
           cx={center}
           cy={center}
           fill="transparent"
-          stroke="white"
+          stroke="#3FA9F5"
           strokeWidth={w2}
           strokeLinecap={strokeLinecap}
           strokeDasharray={c2}
@@ -134,9 +136,8 @@ export default class extends React.Component {
           y="50%"
           dominantBaseline="middle"
           textAnchor="middle"
-          style={{ ...unselectable }}
         >
-          {Math.floor(value * 100)}%
+          {formatter(value)}
         </text>
       </svg>
     );
