@@ -4,7 +4,7 @@
   grid-template-rows: 100px auto 60px;
   grid-template-areas:
     ". header .     "
-    ". knobs  themes"
+    ". main   themes"
     ". footer .     ";
   width: 100%;
   height: 100%;
@@ -17,9 +17,12 @@
   text-align: center;
 }
 
-.knobs {
-  grid-area: knobs;
+.main {
+  grid-area: main;
   background-color: gainsboro;
+}
+
+.knobs {
   display: grid;
   grid: 200px 200px 200px / 200px 200px 200px;
   align-items: center;
@@ -35,4 +38,8 @@
   grid-area: footer;
   place-self: center;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
