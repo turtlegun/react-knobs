@@ -20,10 +20,15 @@
 .knobs {
   grid-area: knobs;
   background-color: gainsboro;
+  display: grid;
+  grid: 200px 200px 200px / 200px 200px 200px;
+  align-items: center;
+  justify-content: center;
 }
 
 .themes {
   grid-area: themes;
+  place-self: center;
 }
 
 .footer {
