@@ -12,7 +12,7 @@ export default class extends React.Component {
     super(props);
     this.state = {
       isDragging: false,
-      dragStartProgress: 0,
+      dragStartValue: 0,
       dragStartX: 0,
       dragStartY: 0,
     };
@@ -29,7 +29,7 @@ export default class extends React.Component {
     document.body.style.cursor = 'none';
     this.setState({
       isDragging: true,
-      dragStartProgress: this.props.progress,
+      dragStartValue: this.props.value,
       dragStartX: event.pageX,
       dragStartY: event.pageY,
     });
@@ -41,21 +41,21 @@ export default class extends React.Component {
     });
   }
   handleMouseMove = (event) => {
-    if (this.state.isDragging && this.props.onProgressChange) {
-      const pivot = this.state.dragStartProgress * 60;
+    if (this.state.isDragging && this.props.onChange) {
+      const pivot = this.state.dragStartValue * 60;
       const pad = 60 - pivot;
-      const newProgress = (pivot + Math.max(-pivot, Math.min(pad, this.state.dragStartY - event.pageY))) / 60;
-      this.props.onProgressChange(newProgress);
+      const newValue = (pivot + Math.max(-pivot, Math.min(pad, this.state.dragStartY - event.pageY))) / 60;
+      this.props.onChange(newValue);
     }
   }
   render() {
     const scale = this.props.scale == null ? 1 : this.props.scale;
-    const progress = this.props.progress == null ? 1 : this.props.progress;
+    const value = this.props.value == null ? 1 : this.props.value;
     const size = 120 * scale;
     const strokeWidth = 12 * scale;
     const radius = size / 2 - strokeWidth / 2;
     const circumference = 2 * Math.PI * radius;
-    const dashoffset = circumference * (1 - progress * 0.75);
+    const dashoffset = circumference * (1 - value * 0.75);
     const center = size / 2;
     return (
       <svg
@@ -93,7 +93,7 @@ export default class extends React.Component {
           textAnchor="middle"
           style={{ ...unselectable }}
         >
-          {Math.floor(progress * 100)}%
+          {Math.floor(value * 100)}%
         </text>
       </svg>
     );

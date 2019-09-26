@@ -6,12 +6,12 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      knob1Progress: 0.15,
+      knob1Value: 0.15,
     };
   }
-  handleKnob1ProgressChange = (progress) => {
+  handleKnob1ProgressChange = (value) => {
     this.setState({
-      knob1Progress: progress,
+      knob1Value: value,
     })
   }
   render() {
@@ -23,8 +23,8 @@ export default class extends React.Component {
         <div className="knobs">
           <BicolorKnob
             scale={1}
-            progress={this.state.knob1Progress}
-            onProgressChange={this.handleKnob1ProgressChange}
+            value={this.state.knob1Value}
+            onChange={this.handleKnob1ProgressChange}
           />
         </div>
         <div className="themes">
