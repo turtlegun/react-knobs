@@ -54,48 +54,69 @@ export default class extends React.Component {
     const value = this.props.value == null ? 1 : this.props.value;
     const size = 120 * scale;
     const center = size / 2;
-    let strokeLinecap = "none";
-    const w1 = 12 * scale;
-    const r1 = size / 2 - w1 / 2;
-    const c1 = 2 * Math.PI * r1;
-    let w2 = 0;
-    let r2 = 0;
-    let c2 = 0;
+    const knobContourWidth = 12 * scale;
+    const knobRadius = size / 2 - knobContourWidth / 2;
+    const knobContourCircumference = 2 * Math.PI * knobRadius;
+    let valueLineWidth = 0;
+    let valueLineRadius = 0;
+    let valueContourCircumference = 0;
+    let fillColor = 'red';
+    let textColor = 'red';
+    let handColor = 'red';
+    let strokeLinecap = 'none';
     switch (this.props.preset) {
       case 'fullon-butt':
-        w2 = w1;
-        r2 = r1;
-        c2 = c1;
+        valueLineWidth = knobContourWidth;
+        valueLineRadius = knobRadius;
+        valueContourCircumference = knobContourCircumference;
+        fillColor = 'transparent';
+        textColor = 'black';
+        handColor = this.props.handColor || 'transparent';
         strokeLinecap = this.props.strokeLinecap || "butt";
         break;
       case 'fullon-round':
-        w2 = w1;
-        r2 = r1;
-        c2 = c1;
+        valueLineWidth = knobContourWidth;
+        valueLineRadius = knobRadius;
+        valueContourCircumference = knobContourCircumference;
+        fillColor = 'transparent';
+        textColor = 'black';
+        handColor = this.props.handColor || 'transparent';
         strokeLinecap = this.props.strokeLinecap || "round";
         break;
       case 'midlane-butt':
-        w2 = w1 * 0.5;
-        r2 = r1;
-        c2 = c1;
+        valueLineWidth = knobContourWidth * 0.5;
+        valueLineRadius = knobRadius;
+        valueContourCircumference = knobContourCircumference;
+        fillColor = 'transparent';
+        textColor = 'black';
+        handColor = this.props.handColor || 'transparent';
         strokeLinecap = this.props.strokeLinecap || "butt";
         break;
       case 'midlane-round':
-        w2 = w1 * 0.5;
-        r2 = r1;
-        c2 = c1;
+        valueLineWidth = knobContourWidth * 0.5;
+        valueLineRadius = knobRadius;
+        valueContourCircumference = knobContourCircumference;
+        fillColor = 'transparent';
+        textColor = 'black';
+        handColor = this.props.handColor || 'transparent';
         strokeLinecap = this.props.strokeLinecap || "round";
         break;
       case 'concentric':
-        w2 = w1 * 0.5;
-        r2 = r1 + w1 * 0.25;
-        c2 = 2 * Math.PI * r2;
+        valueLineWidth = knobContourWidth * 0.5;
+        valueLineRadius = knobRadius + knobContourWidth * 0.25;
+        valueContourCircumference = 2 * Math.PI * valueLineRadius;
+        fillColor = 'transparent';
+        textColor = 'black';
+        handColor = this.props.handColor || 'transparent';
         strokeLinecap = this.props.strokeLinecap || "butt";
         break;
       case 'blindfold':
-        w2 = w1 * 0.5;
-        r2 = r1 + w1 * 0.5;
-        c2 = 2 * Math.PI * r2;
+        valueLineWidth = 0;
+        valueLineRadius = knobRadius + knobContourWidth * 0.5;
+        valueContourCircumference = 2 * Math.PI * valueLineRadius;
+        fillColor = 'black';
+        textColor = 'transparent';
+        handColor = this.props.handColor || 'white';
         strokeLinecap = this.props.strokeLinecap || "round";
         break;
     }
@@ -108,32 +129,42 @@ export default class extends React.Component {
         style={{ ...unselectable }}
       >
         <circle
-          r={r1}
+          r={knobRadius}
           cx={center}
           cy={center}
-          fill="transparent"
+          fill={fillColor}
           stroke="black"
-          strokeWidth={w1}
+          strokeWidth={knobContourWidth}
           strokeLinecap={strokeLinecap}
-          strokeDasharray={c1}
-          strokeDashoffset={c1 * 0.25}
+          strokeDasharray={knobContourCircumference}
+          strokeDashoffset={knobContourCircumference * 0.25}
           transform={`rotate(135 ${center} ${center})`}
         />
         <circle
-          r={r2}
+          r={valueLineRadius}
           cx={center}
           cy={center}
-          fill="transparent"
+          fill={fillColor}
           stroke="#3FA9F5"
-          strokeWidth={w2}
+          strokeWidth={valueLineWidth}
           strokeLinecap={strokeLinecap}
-          strokeDasharray={c2}
-          strokeDashoffset={c2 * (1 - value * 0.75)}
+          strokeDasharray={valueContourCircumference}
+          strokeDashoffset={valueContourCircumference * (1 - value * 0.75)}
           transform={`rotate(135 ${center} ${center})`}
+        />
+        <line
+          x1={center}
+          y1={center}
+          x2={center}
+          y2={center - valueLineRadius}
+          transform={`rotate(${-135 + value * 270} ${center} ${center})`}
+          stroke={handColor}
+          strokeWidth={2}
         />
         <text
           x="50%"
           y="50%"
+          fill={textColor}
           dominantBaseline="middle"
           textAnchor="middle"
         >
