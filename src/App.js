@@ -4,16 +4,23 @@ import classNames from 'classnames';
 import BicolorKnob from './components/BicolorKnob';
 import './App.css';
 
-// const knobDescriptions = {
-//   'preset': 'fullon-butt'
-// };
+const KNOB_INITIAL_VALUE = 0.15;
+
+const KNOB_PRESETS = [
+  'fullon-butt',
+  'fullon-round',
+  'midlane-butt',
+  'midlane-round',
+  'concentric',
+  'blindfold',
+];
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       activeTab: 'quick-demo',
-      knobValues: [0.15, 0.15, 0.15, 0.15, 0.15, 0.15],
+      knobValues: Array.from({ length: KNOB_PRESETS.length }, () => KNOB_INITIAL_VALUE),
     };
   }
   handleQuickDemoTabClick = () => {
@@ -26,7 +33,7 @@ export default class extends React.Component {
       activeTab: 'code-examples',
     });
   }
-  handleKnobProgressChange = (index) => (value) => {
+  handleKnobProgressChange = (index, value) => {
     const newKnobValues = [...this.state.knobValues];
     newKnobValues[index] = value;
     this.setState({
@@ -38,7 +45,7 @@ export default class extends React.Component {
       <div className="app">
         <header className="header">
           react-knobs-demo
-      </header>
+        </header>
         <div className="main">
           <div className="tabs">
             <button
@@ -55,42 +62,14 @@ export default class extends React.Component {
             </button>
           </div>
           <div className={classNames('knobs', { 'hidden': this.state.activeTab != 'quick-demo' })}>
-            <BicolorKnob
-              preset="fullon-butt"
-              scale={1}
-              value={this.state.knobValues[0]}
-              onChange={this.handleKnobProgressChange(0)}
-            />
-            <BicolorKnob
-              preset="fullon-round"
-              scale={1}
-              value={this.state.knobValues[1]}
-              onChange={this.handleKnobProgressChange(1)}
-            />
-            <BicolorKnob
-              preset="midlane-butt"
-              scale={1}
-              value={this.state.knobValues[2]}
-              onChange={this.handleKnobProgressChange(2)}
-            />
-            <BicolorKnob
-              preset="midlane-round"
-              scale={1}
-              value={this.state.knobValues[3]}
-              onChange={this.handleKnobProgressChange(3)}
-            />
-            <BicolorKnob
-              preset="concentric"
-              scale={1}
-              value={this.state.knobValues[4]}
-              onChange={this.handleKnobProgressChange(4)}
-            />
-            <BicolorKnob
-              preset="blindfold"
-              scale={1}
-              value={this.state.knobValues[5]}
-              onChange={this.handleKnobProgressChange(5)}
-            />
+            {KNOB_PRESETS.map((preset, index) => (
+              <BicolorKnob
+                preset={preset}
+                scale={1}
+                value={this.state.knobValues[index]}
+                onChange={(value) => this.handleKnobProgressChange(index, value)}
+              />
+            ))}
           </div>
           <div className={classNames({ 'hidden': this.state.activeTab != 'code-examples' })}>
             234234
@@ -98,10 +77,10 @@ export default class extends React.Component {
         </div>
         <div className="themes">
           themes
-      </div>
+        </div>
         <footer className="footer">
           Andrii Polishchuk, 2019
-      </footer>
+        </footer>
       </div>
     );
   }
