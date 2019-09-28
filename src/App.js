@@ -49,21 +49,22 @@ export default class extends React.Component {
         <div className="main">
           <div className="tabs">
             <button
-              className={classNames('tab-button', { 'active': this.state.activeTab == 'quick-demo' })}
+              className={classNames('tab-button', { 'active': this.state.activeTab === 'quick-demo' })}
               onClick={this.handleQuickDemoTabClick}
             >
               Quick Demo
             </button>
             <button
-              className={classNames('tab-button', { 'active': this.state.activeTab == 'code-examples' })}
+              className={classNames('tab-button', { 'active': this.state.activeTab === 'code-examples' })}
               onClick={this.handleCodeExamplesTabClick}
             >
               Code Examples
             </button>
           </div>
-          <div className={classNames('knobs', { 'hidden': this.state.activeTab != 'quick-demo' })}>
+          <div className={classNames('knobs', { 'hidden': this.state.activeTab !== 'quick-demo' })}>
             {KNOB_PRESETS.map((preset, index) => (
               <BicolorKnob
+                key={preset}
                 preset={preset}
                 scale={1}
                 value={this.state.knobValues[index]}
@@ -71,7 +72,7 @@ export default class extends React.Component {
               />
             ))}
           </div>
-          <div className={classNames({ 'hidden': this.state.activeTab != 'code-examples' })}>
+          <div className={classNames({ 'hidden': this.state.activeTab !== 'code-examples' })}>
             234234
           </div>
         </div>
