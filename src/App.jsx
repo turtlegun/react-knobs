@@ -4,8 +4,6 @@ import classNames from 'classnames';
 import BicolorKnob from './components/BicolorKnob';
 import './App.css';
 
-const KNOB_INITIAL_VALUE = 0.15;
-
 const KNOB_PRESETS = [
   'fullon-butt',
   'fullon-round',
@@ -18,7 +16,7 @@ const KNOB_PRESETS = [
 export default function () {
   const [activeTab, setActiveTab] = useState('quick-demo');
   const [knobValues, setKnobValues] = useState(
-    Array.from({ length: KNOB_PRESETS.length }, () => KNOB_INITIAL_VALUE)
+    Array.from({ length: KNOB_PRESETS.length }, () => Math.random())
   );
 
   const handleQuickDemoTabClick = () => setActiveTab('quick-demo');
@@ -36,18 +34,18 @@ export default function () {
       </header>
       <div className="main">
         <div className="tabs">
-          <button
-            className={classNames('tab-button', { 'active': activeTab === 'quick-demo' })}
+          <div
+            className={classNames('tab', { 'active': activeTab === 'quick-demo' })}
             onClick={handleQuickDemoTabClick}
           >
             Quick Demo
-          </button>
-          <button
-            className={classNames('tab-button', { 'active': activeTab === 'code-examples' })}
+          </div>
+          <div
+            className={classNames('tab', { 'active': activeTab === 'code-examples' })}
             onClick={handleCodeExamplesTabClick}
           >
             Code Examples
-          </button>
+          </div>
         </div>
         <div className={classNames('knobs', { 'hidden': activeTab !== 'quick-demo' })}>
           {KNOB_PRESETS.map((preset, index) => (
@@ -64,11 +62,8 @@ export default function () {
           Code examples
         </div>
       </div>
-      <div className="themes">
-        themes
-      </div>
       <footer className="footer">
-        Andrii Polishchuk, 2019
+        Andrii Polishchuk (c) 2019
       </footer>
     </div>
   );
