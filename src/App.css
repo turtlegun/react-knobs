@@ -29,7 +29,7 @@
 
 .tabs {
   display: grid;
-  grid: 40px / 50% 50%;
+  grid: 32pt / 50% 50%;
   width: 100%;
 }
 
@@ -38,18 +38,20 @@
   place-self: stretch;
   align-items: center;
   justify-content: center;
+  font-size: 14pt;
   color: #899EAA;
   background-color: #405D64;
 }
 
 .tab:hover {
   cursor: pointer;
-  text-decoration: underline;
+  color: #193540;
 }
 
 .tab.active {
   color: #193540;
   background-color: #5F7884;
+  text-decoration: underline;
 }
 
 .knobs {
