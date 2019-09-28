@@ -119,6 +119,9 @@ export default class extends React.Component {
         handColor = this.props.handColor || 'white';
         strokeLinecap = this.props.strokeLinecap || "round";
         break;
+      default:
+        console.warn(`Unknown Knob preset: "${this.props.preset}"`);
+        break;
     }
     return (
       <svg
