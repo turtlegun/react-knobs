@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import classNames from 'classnames';
 
 import BicolorKnob from './components/BicolorKnob';
+import examples from './examples';
 import './App.css';
 
 const KNOB_PRESETS = [
@@ -49,17 +52,27 @@ export default function () {
         </div>
         <div className={classNames('knobs', { 'hidden': activeTab !== 'quick-demo' })}>
           {KNOB_PRESETS.map((preset, index) => (
-            <BicolorKnob
-              key={preset}
-              preset={preset}
-              scale={1}
-              value={knobValues[index]}
-              onChange={(value) => handleKnobProgressChange(index, value)}
-            />
+            <div className="center" key={preset}>
+              <BicolorKnob
+                preset={preset}
+                scale={1}
+                value={knobValues[index]}
+                onChange={(value) => handleKnobProgressChange(index, value)}
+              />
+            </div>
           ))}
         </div>
-        <div className={classNames({ 'hidden': activeTab !== 'code-examples' })}>
-          Code examples
+        <div className={classNames('examples', { 'hidden': activeTab !== 'code-examples' })}>
+          {examples.map(([code, Component], index) => (
+            <React.Fragment key={index}>
+              <div className="center">
+                <Component />
+              </div>
+              <SyntaxHighlighter language="javascript" style={docco}>
+                {code}
+              </SyntaxHighlighter>
+            </React.Fragment>
+          ))}
         </div>
       </div>
       <footer className="footer">

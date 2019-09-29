@@ -56,7 +56,14 @@
 
 .knobs {
   display: grid;
-  grid: 33% 33% 33% / 200px 200px;
+  grid: 33% 33% 33% / 40% 40%;
+  align-items: center;
+  justify-content: center;
+}
+
+.examples {
+  display: grid;
+  grid: 340px 200px / 220px 480px auto;
   align-items: center;
   justify-content: center;
 }
@@ -71,4 +78,10 @@
 
 .hidden {
   display: none;
+}
+
+.center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
