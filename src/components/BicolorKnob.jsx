@@ -132,6 +132,7 @@ export default function (props) {
       viewBox={`0 0 ${size} ${size}`}
       onMouseDown={handleMouseDown}
       style={{ ...unselectable }}
+      data-testid="knob"
     >
       <circle
         r={knobRadius}
