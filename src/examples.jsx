@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BicolorKnob from './components/BicolorKnob';
+import Knob from './components/Knob';
 
 export default [
   [
@@ -7,7 +7,7 @@ export default [
     function Knob1() {
       const [value, setValue] = useState(0.4);
       return (
-        <BicolorKnob
+        <Knob
           preset="fullon-butt"
           scale={1}
           value={value}
@@ -19,7 +19,7 @@ export default [
     function () {
       const [value, setValue] = useState(0.4);
       return (
-        <BicolorKnob
+        <Knob
           preset="fullon-butt"
           scale={1}
           value={value}

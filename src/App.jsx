@@ -3,7 +3,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import classNames from 'classnames';
 
-import BicolorKnob from './components/BicolorKnob';
+import Knob from './components/Knob';
 import examples from './examples';
 import './App.css';
 
@@ -53,7 +53,7 @@ export default function () {
         <div className={classNames('knobs', { 'hidden': activeTab !== 'quick-demo' })}>
           {KNOB_PRESETS.map((preset, index) => (
             <div className="center" key={preset}>
-              <BicolorKnob
+              <Knob
                 preset={preset}
                 scale={1}
                 value={knobValues[index]}

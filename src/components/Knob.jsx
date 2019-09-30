@@ -50,6 +50,7 @@ export default function (props) {
     };
   }, [handleMouseUp, handleMouseMove]);
 
+  const preset = props.preset || 'fullon-butt';
   const formatter = props.formatter || ((value) => Math.floor(value * 100) + '%');
   const scale = props.scale == null ? 1 : props.scale;
   const value = props.value == null ? 1 : props.value;
@@ -65,7 +66,7 @@ export default function (props) {
   let textColor = 'red';
   let handColor = 'red';
   let strokeLinecap = 'none';
-  switch (props.preset) {
+  switch (preset) {
     case 'fullon-butt':
       valueLineWidth = knobContourWidth;
       valueLineRadius = knobRadius;
@@ -121,7 +122,7 @@ export default function (props) {
       strokeLinecap = props.strokeLinecap || "round";
       break;
     default:
-      console.warn(`Unknown Knob preset: "${props.preset}"`);
+      console.warn(`Unknown Knob preset: "${preset}"`);
       break;
   }
 
