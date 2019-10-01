@@ -22,6 +22,19 @@ const centeredStyle = {
   justifyContent: 'center',
 };
 
+/**
+ * Knob component
+ * @param {object} props Component props
+ * @param {number} props.value Value of the parameter controlled by knob
+ * @param {number} props.scale Scale multiplier for layout and fonts
+ * @param {string} props.title Title of the parameter controlled by knob
+ * @param {string} props.tooltip Text to show on hover
+ * @param {string} props.preset Name of the preset to control knob appearance
+ * @param {string} props.handColor Color of the hand displayed inside the knob
+ * @param {string} props.strokeLineCap Name of the line cap type used in value contour
+ * @param {function} props.formatter Function taking value and returning text to display inside the knob
+ * @param {function} props.onChange Callback called with a new value when the knob is rotated
+ */
 export default function (props) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartValue, setDragStartValue] = useState(0);
