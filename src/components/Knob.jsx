@@ -1,19 +1,26 @@
 import React, { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react';
 
-const unselectable = {
+const DEFAULT_SIZE = 120;
+const DEFAULT_TITLE_FONT_SIZE = 22;
+
+const headerStyle = {
+  textAlign: 'center',
+  fontSize: DEFAULT_TITLE_FONT_SIZE,
+  marginBottom: 8,
+};
+
+const unselectableStyle = {
   WebkitUserSelect: 'none',
   MozUserSelect: 'none',
   msUserSelect: 'none',
   userSelect: 'none',
 };
 
-function useEventCallback(fn) {
-  let ref = useRef();
-  useLayoutEffect(() => {
-    ref.current = fn;
-  });
-  return useMemo(() => (...args) => (0, ref.current)(...args), []);
-}
+const centeredStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
 
 export default function (props) {
   const [isDragging, setIsDragging] = useState(false);
@@ -51,10 +58,12 @@ export default function (props) {
   }, [handleMouseUp, handleMouseMove]);
 
   const preset = props.preset || 'fullon-butt';
+  const title = props.title || preset;
+  const tooltip = props.tooltip;
   const formatter = props.formatter || ((value) => Math.floor(value * 100) + '%');
   const scale = props.scale == null ? 1 : props.scale;
   const value = props.value == null ? 1 : props.value;
-  const size = 120 * scale;
+  const size = DEFAULT_SIZE * scale;
   const center = size / 2;
   const knobContourWidth = 12 * scale;
   const knobRadius = size / 2 - knobContourWidth / 2;
@@ -127,56 +136,73 @@ export default function (props) {
   }
 
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox={`0 0 ${size} ${size}`}
-      onMouseDown={handleMouseDown}
-      style={{ ...unselectable }}
-      data-testid="knob"
-    >
-      <circle
-        r={knobRadius}
-        cx={center}
-        cy={center}
-        fill={fillColor}
-        stroke="black"
-        strokeWidth={knobContourWidth}
-        strokeLinecap={strokeLinecap}
-        strokeDasharray={knobContourCircumference}
-        strokeDashoffset={knobContourCircumference * 0.25}
-        transform={`rotate(135 ${center} ${center})`}
-      />
-      <circle
-        r={valueLineRadius}
-        cx={center}
-        cy={center}
-        fill={fillColor}
-        stroke="#3FA9F5"
-        strokeWidth={valueLineWidth}
-        strokeLinecap={strokeLinecap}
-        strokeDasharray={valueContourCircumference}
-        strokeDashoffset={valueContourCircumference * (1 - value * 0.75)}
-        transform={`rotate(135 ${center} ${center})`}
-      />
-      <line
-        x1={center}
-        y1={center}
-        x2={center}
-        y2={center - valueLineRadius}
-        transform={`rotate(${-135 + value * 270} ${center} ${center})`}
-        stroke={handColor}
-        strokeWidth={2}
-      />
-      <text
-        x="50%"
-        y="50%"
-        fill={textColor}
-        dominantBaseline="middle"
-        textAnchor="middle"
-      >
-        {formatter(value)}
-      </text>
-    </svg>
+    <>
+      <header style={headerStyle}>
+        {title}
+      </header>
+      <div style={centeredStyle}>
+        <svg
+          width={size}
+          height={size}
+          onMouseDown={handleMouseDown}
+          style={unselectableStyle}
+          data-testid="knob"
+        >
+          <title>
+            {tooltip}
+          </title>
+          <circle
+            r={knobRadius}
+            cx={center}
+            cy={center}
+            fill={fillColor}
+            stroke="black"
+            strokeWidth={knobContourWidth}
+            strokeLinecap={strokeLinecap}
+            strokeDasharray={knobContourCircumference}
+            strokeDashoffset={knobContourCircumference * 0.25}
+            transform={`rotate(135 ${center} ${center})`}
+          />
+          <circle
+            r={valueLineRadius}
+            cx={center}
+            cy={center}
+            fill={fillColor}
+            stroke="#3FA9F5"
+            strokeWidth={valueLineWidth}
+            strokeLinecap={strokeLinecap}
+            strokeDasharray={valueContourCircumference}
+            strokeDashoffset={valueContourCircumference * (1 - value * 0.75)}
+            transform={`rotate(135 ${center} ${center})`}
+          />
+          <line
+            x1={center}
+            y1={center}
+            x2={center}
+            y2={center - valueLineRadius}
+            transform={`rotate(${-135 + value * 270} ${center} ${center})`}
+            stroke={handColor}
+            strokeWidth={2}
+          />
+          <text
+            x="50%"
+            y={center}
+            fill={textColor}
+            dominantBaseline="middle"
+            textAnchor="middle"
+          >
+            {formatter(value)}
+          </text>
+        </svg>
+      </div>
+    </>
   );
+}
+
+function useEventCallback(fn) {
+  let ref = useRef();
+  useLayoutEffect(() => {
+    ref.current = fn;
+  });
+  return useMemo(() => (...args) => (0, ref.current)(...args), []);
 }
