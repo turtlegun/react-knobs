@@ -81,6 +81,8 @@ const KnobsContainer = styled.div`
   grid: 33% 33% 33% / 40% 40%;
   width: 100%;
   height: 100%;
+  padding: 60px;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
 `;
@@ -144,7 +146,6 @@ export default function () {
               <Centered key={preset}>
                 <Knob
                   preset={preset}
-                  scale={1}
                   value={knobValues[index]}
                   onChange={(value) => handleKnobProgressChange(index, value)}
                 />
