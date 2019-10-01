@@ -39,11 +39,15 @@ export default function (props) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartValue, setDragStartValue] = useState(0);
   const [dragStartY, setDragStartY] = useState(0);
+  const [uncontrolledValue, setUncontrolledValue] = useState(0);
+
+  const isUncontrolled = props.value === undefined;
+  const value = isUncontrolled ? uncontrolledValue : props.value;
 
   const handleMouseDown = (event) => {
     document.body.style.cursor = 'none';
     setIsDragging(true);
-    setDragStartValue(props.value);
+    setDragStartValue(value);
     setDragStartY(event.pageY);
   };
 
@@ -53,11 +57,16 @@ export default function (props) {
   });
 
   const handleMouseMove = useEventCallback((event) => {
-    if (isDragging && props.onChange) {
+    if (isDragging) {
       const pivot = dragStartValue * 60;
       const pad = 60 - pivot;
       const newValue = (pivot + Math.max(-pivot, Math.min(pad, dragStartY - event.pageY))) / 60;
-      props.onChange(newValue);
+      if (isUncontrolled) {
+        setUncontrolledValue(newValue);
+      }
+      if (props.onChange) {
+        props.onChange(newValue);
+      }
     }
   });
 
@@ -75,7 +84,6 @@ export default function (props) {
   const tooltip = props.tooltip;
   const formatter = props.formatter || ((value) => Math.floor(value * 100) + '%');
   const scale = props.scale == null ? 1 : props.scale;
-  const value = props.value == null ? 1 : props.value;
   const size = DEFAULT_SIZE * scale;
   const center = size / 2;
   const knobContourWidth = 12 * scale;
