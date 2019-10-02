@@ -1,27 +1,6 @@
 import React from 'react';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
-
-const DEFAULT_SIZE = 120;
-const DEFAULT_TITLE_FONT_SIZE = 22;
-
-const headerStyle = {
-  textAlign: 'center',
-  fontSize: DEFAULT_TITLE_FONT_SIZE,
-  marginBottom: 8,
-};
-
-const unselectableStyle = {
-  WebkitUserSelect: 'none',
-  MozUserSelect: 'none',
-  msUserSelect: 'none',
-  userSelect: 'none',
-};
-
-const centeredStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
+import * as styles from './styles';
 
 /**
  * MidlaneKnob component
@@ -41,7 +20,7 @@ export default function (props) {
   const tooltip = props.tooltip;
   const formatter = props.formatter || ((value) => Math.floor(value * 100) + '%');
   const scale = props.scale == null ? 1 : props.scale;
-  const size = DEFAULT_SIZE * scale;
+  const size = styles.DEFAULT_SIZE * scale;
   const center = size / 2;
   const knobContourWidth = 12 * scale;
   const knobRadius = size / 2 - knobContourWidth / 2;
@@ -51,18 +30,18 @@ export default function (props) {
   const valueContourCircumference = knobContourCircumference;
   const fillColor = 'transparent';
   const textColor = 'black';
-  const strokeLineCap = props.strokeLineCap || "butt";
+  const strokeLineCap = props.strokeLineCap || 'butt';
   return (
     <>
-      <header style={headerStyle}>
+      <header style={styles.header}>
         {title}
       </header>
-      <div style={centeredStyle}>
+      <div style={styles.centered}>
         <svg
           width={size}
           height={size}
           onMouseDown={handleMouseDown}
-          style={unselectableStyle}
+          style={styles.unselectable}
           data-testid="knob"
         >
           <title>
