@@ -4,15 +4,16 @@ import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styled, { css } from 'styled-components';
 
 import Knob from './components/Knob';
+import FullonKnob from './components/FullonKnob';
 import examples from './examples';
 
 const KNOB_PRESETS = [
-  'fullon-butt',
-  'fullon-round',
-  'midlane-butt',
-  'midlane-round',
-  'concentric',
-  'blindfold',
+  { Component: FullonKnob, title: 'fullon-butt', strokeLineCap: 'butt' },
+  { Component: FullonKnob, title: 'fullon-round', strokeLineCap: 'round' },
+  { Component: Knob, title: 'midlane-butt' },
+  { Component: Knob, title: 'midlane-round' },
+  { Component: Knob, title: 'concentric' },
+  { Component: Knob, title: 'blindfold' },
 ];
 
 const AppContainer = styled.div`
@@ -140,10 +141,10 @@ export default function () {
         </TabsContainer>
         <Conditional visible={activeTab === 'quick-demo'}>
           <KnobsContainer>
-            {KNOB_PRESETS.map((preset, index) => (
-              <Centered key={preset}>
-                <Knob
-                  preset={preset}
+            {KNOB_PRESETS.map(({ Component, ...props }, index) => (
+              <Centered key={props.title}>
+                <Component
+                  {...props}
                   value={knobValues[index]}
                   onChange={(value) => handleKnobProgressChange(index, value)}
                 />
