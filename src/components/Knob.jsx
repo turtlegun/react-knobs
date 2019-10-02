@@ -89,8 +89,8 @@ export default function (props) {
   const knobContourWidth = 12 * scale;
   const knobRadius = size / 2 - knobContourWidth / 2;
   const knobContourCircumference = 2 * Math.PI * knobRadius;
-  let valueLineWidth = 0;
-  let valueLineRadius = 0;
+  let valueContourWidth = 0;
+  let valueContourRadius = 0;
   let valueContourCircumference = 0;
   let fillColor = 'red';
   let textColor = 'red';
@@ -98,8 +98,8 @@ export default function (props) {
   let strokeLinecap = 'none';
   switch (preset) {
     case 'fullon-butt':
-      valueLineWidth = knobContourWidth;
-      valueLineRadius = knobRadius;
+      valueContourWidth = knobContourWidth;
+      valueContourRadius = knobRadius;
       valueContourCircumference = knobContourCircumference;
       fillColor = 'transparent';
       textColor = 'black';
@@ -107,8 +107,8 @@ export default function (props) {
       strokeLinecap = props.strokeLinecap || "butt";
       break;
     case 'fullon-round':
-      valueLineWidth = knobContourWidth;
-      valueLineRadius = knobRadius;
+      valueContourWidth = knobContourWidth;
+      valueContourRadius = knobRadius;
       valueContourCircumference = knobContourCircumference;
       fillColor = 'transparent';
       textColor = 'black';
@@ -116,8 +116,8 @@ export default function (props) {
       strokeLinecap = props.strokeLinecap || "round";
       break;
     case 'midlane-butt':
-      valueLineWidth = knobContourWidth * 0.5;
-      valueLineRadius = knobRadius;
+      valueContourWidth = knobContourWidth * 0.5;
+      valueContourRadius = knobRadius;
       valueContourCircumference = knobContourCircumference;
       fillColor = 'transparent';
       textColor = 'black';
@@ -125,8 +125,8 @@ export default function (props) {
       strokeLinecap = props.strokeLinecap || "butt";
       break;
     case 'midlane-round':
-      valueLineWidth = knobContourWidth * 0.5;
-      valueLineRadius = knobRadius;
+      valueContourWidth = knobContourWidth * 0.5;
+      valueContourRadius = knobRadius;
       valueContourCircumference = knobContourCircumference;
       fillColor = 'transparent';
       textColor = 'black';
@@ -134,18 +134,18 @@ export default function (props) {
       strokeLinecap = props.strokeLinecap || "round";
       break;
     case 'concentric':
-      valueLineWidth = knobContourWidth * 0.5;
-      valueLineRadius = knobRadius + knobContourWidth * 0.25;
-      valueContourCircumference = 2 * Math.PI * valueLineRadius;
+      valueContourWidth = knobContourWidth * 0.5;
+      valueContourRadius = knobRadius + knobContourWidth * 0.25;
+      valueContourCircumference = 2 * Math.PI * valueContourRadius;
       fillColor = 'transparent';
       textColor = 'black';
       handColor = props.handColor || 'transparent';
       strokeLinecap = props.strokeLinecap || "butt";
       break;
     case 'blindfold':
-      valueLineWidth = 0;
-      valueLineRadius = knobRadius + knobContourWidth * 0.5;
-      valueContourCircumference = 2 * Math.PI * valueLineRadius;
+      valueContourWidth = 0;
+      valueContourRadius = knobRadius + knobContourWidth * 0.5;
+      valueContourCircumference = 2 * Math.PI * valueContourRadius;
       fillColor = 'black';
       textColor = 'transparent';
       handColor = props.handColor || 'white';
@@ -185,12 +185,12 @@ export default function (props) {
             transform={`rotate(135 ${center} ${center})`}
           />
           <circle
-            r={valueLineRadius}
+            r={valueContourRadius}
             cx={center}
             cy={center}
             fill={fillColor}
             stroke="#3FA9F5"
-            strokeWidth={valueLineWidth}
+            strokeWidth={valueContourWidth}
             strokeLinecap={strokeLinecap}
             strokeDasharray={valueContourCircumference}
             strokeDashoffset={valueContourCircumference * (1 - value * 0.75)}
@@ -200,7 +200,7 @@ export default function (props) {
             x1={center}
             y1={center}
             x2={center}
-            y2={center - valueLineRadius}
+            y2={center - valueContourRadius}
             transform={`rotate(${-135 + value * 270} ${center} ${center})`}
             stroke={handColor}
             strokeWidth={2}

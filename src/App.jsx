@@ -112,8 +112,6 @@ export default function () {
     Array.from({ length: KNOB_PRESETS.length }, () => Math.random())
   );
 
-  const handleQuickDemoTabClick = () => setActiveTab('quick-demo');
-  const handleCodeExamplesTabClick = () => setActiveTab('code-examples');
   const handleKnobProgressChange = (index, value) => {
     const newKnobValues = [...knobValues];
     newKnobValues[index] = value;
@@ -129,13 +127,13 @@ export default function () {
         <TabsContainer>
           <Tab
             active={activeTab === 'quick-demo'}
-            onClick={handleQuickDemoTabClick}
+            onClick={() => setActiveTab('quick-demo')}
           >
             Quick Demo
           </Tab>
           <Tab
             active={activeTab === 'code-examples'}
-            onClick={handleCodeExamplesTabClick}
+            onClick={() => setActiveTab('code-examples')}
           >
             Code Examples
           </Tab>

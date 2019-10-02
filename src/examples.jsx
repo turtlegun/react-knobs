@@ -9,7 +9,6 @@ export default [
       return (
         <Knob
           preset="fullon-butt"
-          scale={1}
           value={value}
           onChange={(newValue) => setValue(newValue)}
         />
@@ -21,7 +20,6 @@ export default [
       return (
         <Knob
           preset="fullon-butt"
-          scale={1}
           value={value}
           onChange={(newValue) => setValue(newValue)}
         />
