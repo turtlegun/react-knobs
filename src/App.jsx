@@ -5,13 +5,14 @@ import styled, { css } from 'styled-components';
 
 import Knob from './components/Knob';
 import FullonKnob from './components/FullonKnob';
+import MidlaneKnob from './components/MidlaneKnob';
 import examples from './examples';
 
 const KNOB_PRESETS = [
   { Component: FullonKnob, title: 'fullon-butt', strokeLineCap: 'butt' },
   { Component: FullonKnob, title: 'fullon-round', strokeLineCap: 'round' },
-  { Component: Knob, title: 'midlane-butt' },
-  { Component: Knob, title: 'midlane-round' },
+  { Component: MidlaneKnob, title: 'midlane-butt', strokeLineCap: 'butt' },
+  { Component: MidlaneKnob, title: 'midlane-round', strokeLineCap: 'round' },
   { Component: Knob, title: 'concentric' },
   { Component: Knob, title: 'blindfold' },
 ];
