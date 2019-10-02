@@ -27,6 +27,7 @@ const centeredStyle = {
  * Knob component
  * @param {object} props Component props
  * @param {number} props.value Value of the parameter controlled by knob
+ * @param {number} props.defaultValue Default value of the parameter controlled by knob (uncontrolled mode)
  * @param {number} [props.scale] Scale multiplier for layout and fonts
  * @param {string} [props.title] Title of the parameter controlled by knob
  * @param {string} [props.tooltip] Text to show on hover

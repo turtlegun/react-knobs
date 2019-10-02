@@ -12,7 +12,7 @@ export default function (props) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStartValue, setDragStartValue] = useState(0);
   const [dragStartY, setDragStartY] = useState(0);
-  const [uncontrolledValue, setUncontrolledValue] = useState(0);
+  const [uncontrolledValue, setUncontrolledValue] = useState(props.defaultValue || 0);
 
   const isUncontrolled = props.value === undefined;
   const value = isUncontrolled ? uncontrolledValue : props.value;
