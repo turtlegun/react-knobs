@@ -42,9 +42,11 @@ const AppHeader = styled.header`
 
 const AppBody = styled.div`
   display: grid;
-  grid: 40px auto / 100%;
+  grid: 32pt auto / 100%;
   grid-area: main;
   background-color: #899EAA;
+  overflow-y: hidden;
+  height: 100%;
 `;
 
 const AppFooter = styled.footer`
@@ -80,7 +82,7 @@ const Tab = styled.div`
 `;
 
 const KnobsContainer = styled.div`
-  display: grid;
+  display: ${props => props.visible ? 'grid' : 'none'};
   grid: 33% 33% 33% / 40% 40%;
   width: 100%;
   height: 100%;
@@ -91,16 +93,12 @@ const KnobsContainer = styled.div`
 `;
 
 const ExamplesContainer = styled.div`
-  display: grid;
-  grid: 340px 200px / 220px 480px auto;
+  display: ${props => props.visible ? 'grid' : 'none'};
+  grid: auto / 220px 480px;
   align-items: center;
   justify-content: center;
-`;
-
-const Conditional = styled.div`
-  ${props => props.visible === false && css`
-    display: none;
-  `}
+  overflow-y: auto;
+  height: 100%;
 `;
 
 const Centered = styled.div`
@@ -141,33 +139,31 @@ export default function () {
             Code Examples
           </Tab>
         </TabsContainer>
-        <Conditional visible={activeTab === 'quick-demo'}>
-          <KnobsContainer>
-            {KNOB_PRESETS.map(({ Component, ...props }, index) => (
-              <Centered key={props.title}>
-                <Component
-                  {...props}
-                  value={knobValues[index]}
-                  onChange={(value) => handleKnobProgressChange(index, value)}
-                />
+        <KnobsContainer visible={activeTab === 'quick-demo'}>
+          {KNOB_PRESETS.map(({ Component, ...props }, index) => (
+            <Centered key={props.title}>
+              <Component
+                {...props}
+                value={knobValues[index]}
+                onChange={(value) => handleKnobProgressChange(index, value)}
+              />
+            </Centered>
+          ))}
+        </KnobsContainer>
+        <ExamplesContainer visible={activeTab === 'code-examples'}>
+          {examples.map(({ code, Component }, index) => (
+            <React.Fragment key={index}>
+              <Centered>
+                <Component />
               </Centered>
-            ))}
-          </KnobsContainer>
-        </Conditional>
-        <Conditional visible={activeTab === 'code-examples'}>
-          <ExamplesContainer>
-            {examples.map(([code, Component], index) => (
-              <React.Fragment key={index}>
-                <Centered>
-                  <Component />
-                </Centered>
+              <div>
                 <SyntaxHighlighter language="javascript" style={docco}>
                   {code}
                 </SyntaxHighlighter>
-              </React.Fragment>
-            ))}
-          </ExamplesContainer>
-        </Conditional>
+              </div>
+            </React.Fragment>
+          ))}
+        </ExamplesContainer>
       </AppBody>
       <AppFooter>
         Andrii Polishchuk (c) 2019
