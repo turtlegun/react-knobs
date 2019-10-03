@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Knob from './components/Knob';
+import FullonKnob from './components/FullonKnob';
 
 export default [
   [
@@ -18,7 +18,7 @@ export default [
     function () {
       const [value, setValue] = useState(0.4);
       return (
-        <Knob
+        <FullonKnob
           preset="fullon-butt"
           value={value}
           onChange={(newValue) => setValue(newValue)}

@@ -13,7 +13,7 @@ import * as styles from './styles';
  * @param {function} [props.formatter] Function taking value and returning text to display inside the knob
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */
-export default function (props) {
+export default function ConcentricKnob(props) {
   const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;

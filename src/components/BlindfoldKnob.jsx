@@ -12,7 +12,7 @@ import * as styles from './styles';
  * @param {string} [props.tooltip] Text to show on hover
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */
-export default function (props) {
+export default function BlindfoldKnob(props) {
   const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
