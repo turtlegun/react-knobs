@@ -3,9 +3,10 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styled, { css } from 'styled-components';
 
-import Knob from './components/Knob';
 import FullonKnob from './components/FullonKnob';
 import MidlaneKnob from './components/MidlaneKnob';
+import ConcentricKnob from './components/ConcentricKnob';
+import BlindfoldKnob from './components/BlindfoldKnob';
 import examples from './examples';
 
 const KNOB_PRESETS = [
@@ -13,8 +14,8 @@ const KNOB_PRESETS = [
   { Component: FullonKnob, title: 'fullon-round', strokeLineCap: 'round' },
   { Component: MidlaneKnob, title: 'midlane-butt', strokeLineCap: 'butt' },
   { Component: MidlaneKnob, title: 'midlane-round', strokeLineCap: 'round' },
-  { Component: Knob, title: 'concentric' },
-  { Component: Knob, title: 'blindfold' },
+  { Component: ConcentricKnob, title: 'concentric' },
+  { Component: BlindfoldKnob, title: 'blindfold' },
 ];
 
 const AppContainer = styled.div`
