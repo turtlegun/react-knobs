@@ -1,3 +1,5 @@
+/* eslint no-useless-concat: "off" */
+
 import React, { useState } from 'react';
 import FullonKnob from './components/FullonKnob';
 
