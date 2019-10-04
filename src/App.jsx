@@ -99,6 +99,9 @@ const ExamplesContainer = styled.div`
   justify-content: center;
   overflow-y: auto;
   height: 100%;
+  pre {
+    border-radius: 10px;
+  }
 `;
 
 const Centered = styled.div`
