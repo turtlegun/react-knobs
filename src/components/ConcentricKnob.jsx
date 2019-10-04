@@ -30,11 +30,10 @@ export default function ConcentricKnob(props) {
   const valueContourRadius = knobRadius + knobContourWidth * 0.25;
   const valueContourCircumference = 2 * Math.PI * valueContourRadius;
   const fillColor = 'transparent';
-  const textColor = 'black';
   const strokeLineCap = "butt";
   return (
     <div>
-      <header style={styles.header(scale)}>
+      <header style={styles.header(scale, theme)}>
         {title}
       </header>
       <div style={styles.centered}>
@@ -76,7 +75,7 @@ export default function ConcentricKnob(props) {
             x="50%"
             y={center}
             fontSize={16 * scale}
-            fill={textColor}
+            fill={theme.valueTextColor}
             dominantBaseline="middle"
             textAnchor="middle"
           >

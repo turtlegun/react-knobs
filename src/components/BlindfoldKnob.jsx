@@ -25,7 +25,7 @@ export default function BlindfoldKnob(props) {
   const handColor = props.handColor || 'white';
   return (
     <div>
-      <header style={styles.header(scale)}>
+      <header style={styles.header(scale, theme)}>
         {title}
       </header>
       <div style={styles.centered}>

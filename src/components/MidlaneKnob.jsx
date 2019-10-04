@@ -31,11 +31,10 @@ export default function MidlaneKnob(props) {
   const valueContourRadius = knobRadius;
   const valueContourCircumference = knobContourCircumference;
   const fillColor = 'transparent';
-  const textColor = 'black';
   const strokeLineCap = props.strokeLineCap || 'butt';
   return (
     <div>
-      <header style={styles.header(scale)}>
+      <header style={styles.header(scale, theme)}>
         {title}
       </header>
       <div style={styles.centered}>
@@ -77,7 +76,7 @@ export default function MidlaneKnob(props) {
             x="50%"
             y={center}
             fontSize={16 * scale}
-            fill={textColor}
+            fill={theme.valueTextColor}
             dominantBaseline="middle"
             textAnchor="middle"
           >
