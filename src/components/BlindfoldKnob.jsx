@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ThemeContext from './ThemeContext';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
 import * as styles from './styles';
 
@@ -13,6 +14,7 @@ import * as styles from './styles';
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */
 export default function BlindfoldKnob(props) {
+  const theme = useContext(ThemeContext);
   const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
@@ -20,7 +22,6 @@ export default function BlindfoldKnob(props) {
   const size = styles.DEFAULT_SIZE * scale;
   const center = size / 2;
   const radius = size / 2;
-  const fillColor = 'black';
   const handColor = props.handColor || 'white';
   return (
     <>
@@ -42,7 +43,7 @@ export default function BlindfoldKnob(props) {
             r={radius}
             cx={center}
             cy={center}
-            fill={fillColor}
+            fill={theme.knobColor}
             transform={`rotate(135 ${center} ${center})`}
           />
           <line

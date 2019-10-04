@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ThemeContext from './ThemeContext';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
 import * as styles from './styles';
 
@@ -14,6 +15,7 @@ import * as styles from './styles';
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */
 export default function ConcentricKnob(props) {
+  const theme = useContext(ThemeContext);
   const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
@@ -51,7 +53,7 @@ export default function ConcentricKnob(props) {
             cx={center}
             cy={center}
             fill={fillColor}
-            stroke="black"
+            stroke={theme.knobColor}
             strokeWidth={knobContourWidth - 2}
             strokeLinecap={strokeLineCap}
             strokeDasharray={knobContourCircumference}
@@ -63,7 +65,7 @@ export default function ConcentricKnob(props) {
             cx={center}
             cy={center}
             fill={fillColor}
-            stroke="#3FA9F5"
+            stroke={theme.valueContourColor}
             strokeWidth={valueContourWidth}
             strokeLinecap={strokeLineCap}
             strokeDasharray={valueContourCircumference}
