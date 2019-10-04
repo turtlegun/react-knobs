@@ -12,7 +12,7 @@ export default [
       '    <FullonKnob' + '\n' +
       '      defaultValue={0.4}' + '\n' +
       '      onChange={(newValue) =>' + '\n' +
-      '        newValue > 0.75 && alert(\'> 75 % !\')}' + '\n' +
+      '        newValue > 0.75 && alert(\'> 75% !\')}' + '\n' +
       '    />' + '\n' +
       '  );' + '\n' +
       '}',
@@ -32,8 +32,8 @@ export default [
       '  const [state, setState] = useState(0.33);' + '\n' +
       '  return(' + '\n' +
       '    <FullonKnob' + '\n' +
-      '      value = { state }' + '\n' +
-      '      onChange = {(newValue) => setState(newValue)}' + '\n' +
+      '      value={state}' + '\n' +
+      '      onChange={(newValue) => setState(newValue)}' + '\n' +
       '    />' + '\n' +
       '  );' + '\n' +
       '}',
