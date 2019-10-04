@@ -151,12 +151,12 @@ export default function () {
           ))}
         </KnobsContainer>
         <ExamplesContainer visible={activeTab === 'code-examples'}>
-          {examples.map(({ code, Component }, index) => (
+          {examples.map(({ code, codeFontSize, Component }, index) => (
             <React.Fragment key={index}>
               <Centered>
                 <Component />
               </Centered>
-              <div>
+              <div style={{ fontSize: codeFontSize || 14 }}>
                 <SyntaxHighlighter language="javascript" style={docco}>
                   {code}
                 </SyntaxHighlighter>
