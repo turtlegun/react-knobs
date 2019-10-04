@@ -33,7 +33,7 @@ export default function ConcentricKnob(props) {
   const textColor = 'black';
   const strokeLineCap = "butt";
   return (
-    <>
+    <div>
       <header style={styles.header}>
         {title}
       </header>
@@ -83,6 +83,6 @@ export default function ConcentricKnob(props) {
           </text>
         </svg>
       </div>
-    </>
+    </div>
   );
 }

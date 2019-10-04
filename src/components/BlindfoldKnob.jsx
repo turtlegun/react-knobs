@@ -24,7 +24,7 @@ export default function BlindfoldKnob(props) {
   const radius = size / 2;
   const handColor = props.handColor || 'white';
   return (
-    <>
+    <div>
       <header style={styles.header}>
         {title}
       </header>
@@ -57,6 +57,6 @@ export default function BlindfoldKnob(props) {
           />
         </svg>
       </div>
-    </>
+    </div>
   );
 }

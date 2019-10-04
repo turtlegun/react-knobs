@@ -34,7 +34,7 @@ export default function FullonKnob(props) {
   const textColor = 'black';
   const strokeLineCap = props.strokeLineCap || 'butt';
   return (
-    <>
+    <div>
       <header style={styles.header}>
         {title}
       </header>
@@ -84,6 +84,6 @@ export default function FullonKnob(props) {
           </text>
         </svg>
       </div>
-    </>
+    </div>
   );
 }
