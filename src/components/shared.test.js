@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import FullonKnob from './FullonKnob';
 import MidlaneKnob from './MidlaneKnob';
 import ConcentricKnob from './ConcentricKnob';
+import BlindfoldKnob from './BlindfoldKnob';
 
 for (const Knob of [FullonKnob, MidlaneKnob, ConcentricKnob]) {
   const componentName = Knob.name;
@@ -17,6 +18,15 @@ for (const Knob of [FullonKnob, MidlaneKnob, ConcentricKnob]) {
 
   it(`${componentName} supports custom formatter`, () => {
     const { getByText } = render(<Knob formatter={(_value) => "yes"} />);
+    expect(jest.fn(() => getByText('yes'))).not.toThrow();
+  });
+}
+
+for (const Knob of [FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob]) {
+  const componentName = Knob.name;
+
+  it(`${componentName} supports title`, () => {
+    const { getByText } = render(<Knob title="yes" />);
     expect(jest.fn(() => getByText('yes'))).not.toThrow();
   });
 }
