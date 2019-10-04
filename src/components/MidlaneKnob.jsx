@@ -35,7 +35,7 @@ export default function MidlaneKnob(props) {
   const strokeLineCap = props.strokeLineCap || 'butt';
   return (
     <div>
-      <header style={styles.header}>
+      <header style={styles.header(scale)}>
         {title}
       </header>
       <div style={styles.centered}>
@@ -76,6 +76,7 @@ export default function MidlaneKnob(props) {
           <text
             x="50%"
             y={center}
+            fontSize={16 * scale}
             fill={textColor}
             dominantBaseline="middle"
             textAnchor="middle"

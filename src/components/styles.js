@@ -1,10 +1,10 @@
 export const DEFAULT_SIZE = 120;
 
-export const header = {
+export const header = (scale) => ({
   textAlign: 'center',
-  fontSize: 22,
-  marginBottom: 8,
-};
+  fontSize: 22 * scale,
+  marginBottom: 8 * scale,
+});
 
 export const unselectable = {
   WebkitUserSelect: 'none',
