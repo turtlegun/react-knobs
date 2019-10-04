@@ -94,7 +94,7 @@ const KnobsContainer = styled.div`
 
 const ExamplesContainer = styled.div`
   display: ${props => props.visible ? 'grid' : 'none'};
-  grid: auto / 220px 480px;
+  grid: auto / 240px 500px;
   align-items: center;
   justify-content: center;
   overflow-y: auto;

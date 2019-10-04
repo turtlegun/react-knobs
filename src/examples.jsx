@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react';
 import FullonKnob from './components/FullonKnob';
+import MidlaneKnob from './components/MidlaneKnob';
+import ConcentricKnob from './components/ConcentricKnob';
+import BlindfoldKnob from './components/BlindfoldKnob';
 
 export default [
   {
@@ -74,5 +77,37 @@ export default [
         }
       />
     )
+  },
+  {
+    code:
+      '// Other knob types' + '\n' +
+      'function ExampleKnob() {' + '\n' +
+      '  const containerStyle = {' + '\n' +
+      '    display: \'grid\',' + '\n' +
+      '    grid: \'auto / auto auto auto\',' + '\n' +
+      '    gridGap: 3' + '\n' +
+      '  };' + '\n' +
+      '  return (' + '\n' +
+      '    <div style={containerStyle}>' + '\n' +
+      '      <MidlaneKnob scale={0.5} defaultValue={0.3} />' + '\n' +
+      '      <ConcentricKnob scale={0.5} defaultValue={0.5} />' + '\n' +
+      '      <BlindfoldKnob scale={0.5} defaultValue={0.7} />' + '\n' +
+      '    </div>' + '\n' +
+      '  );' + '\n' +
+      '}',
+    Component: () => {
+      const containerStyle = {
+        display: 'grid',
+        grid: 'auto / auto auto auto',
+        gridGap: 3
+      };
+      return (
+        <div style={containerStyle}>
+          <MidlaneKnob scale={0.5} defaultValue={0.3} />
+          <ConcentricKnob scale={0.5} defaultValue={0.5} />
+          <BlindfoldKnob scale={0.5} defaultValue={0.7} />
+        </div>
+      );
+    }
   },
 ];
