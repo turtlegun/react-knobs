@@ -24,13 +24,12 @@ export default function MidlaneKnob(props) {
   const scale = theme.defaultScale * (props.scale == null ? 1 : props.scale);
   const size = styles.DEFAULT_SIZE * scale;
   const center = size / 2;
-  const knobContourWidth = 12 * scale;
-  const knobRadius = size / 2 - knobContourWidth / 2;
-  const knobContourCircumference = 2 * Math.PI * knobRadius;
-  const valueContourWidth = knobContourWidth * 0.5;
-  const valueContourRadius = knobRadius;
-  const valueContourCircumference = knobContourCircumference;
-  const fillColor = 'transparent';
+  const knobStrokeWidth = 12 * scale;
+  const knobRadius = size / 2 - knobStrokeWidth / 2;
+  const knobStrokeCircumference = 2 * Math.PI * knobRadius;
+  const valueStrokeWidth = knobStrokeWidth * 0.5;
+  const valueStrokeRadius = knobRadius;
+  const valueStrokeCircumference = knobStrokeCircumference;
   const strokeLineCap = props.strokeLineCap || 'butt';
   return (
     <div>
@@ -52,24 +51,24 @@ export default function MidlaneKnob(props) {
             r={knobRadius}
             cx={center}
             cy={center}
-            fill={fillColor}
+            fill="transparent"
             stroke={theme.knobColor}
-            strokeWidth={knobContourWidth}
+            strokeWidth={knobStrokeWidth}
             strokeLinecap={strokeLineCap}
-            strokeDasharray={knobContourCircumference}
-            strokeDashoffset={knobContourCircumference * 0.25}
+            strokeDasharray={knobStrokeCircumference}
+            strokeDashoffset={knobStrokeCircumference * 0.25}
             transform={`rotate(135 ${center} ${center})`}
           />
           <circle
-            r={valueContourRadius}
+            r={valueStrokeRadius}
             cx={center}
             cy={center}
-            fill={fillColor}
+            fill="transparent"
             stroke={theme.valueContourColor}
-            strokeWidth={valueContourWidth}
+            strokeWidth={valueStrokeWidth}
             strokeLinecap={strokeLineCap}
-            strokeDasharray={valueContourCircumference}
-            strokeDashoffset={valueContourCircumference * (1 - value * 0.75)}
+            strokeDasharray={valueStrokeCircumference}
+            strokeDashoffset={valueStrokeCircumference * (1 - value * 0.75)}
             transform={`rotate(135 ${center} ${center})`}
           />
           <text
