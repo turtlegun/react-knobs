@@ -23,10 +23,10 @@ export default function ConcentricKnob(props) {
   const scale = theme.defaultScale * (props.scale == null ? 1 : props.scale);
   const size = styles.DEFAULT_SIZE * scale;
   const center = size / 2;
-  const knobStrokeWidth = 12 * scale;
+  const knobStrokeWidth = theme.knobStrokeWidth * scale;
   const knobRadius = size / 2 - knobStrokeWidth / 2;
   const knobStrokeCircumference = 2 * Math.PI * knobRadius;
-  const valueStrokeWidth = knobStrokeWidth * 0.5;
+  const valueStrokeWidth = theme.valueStrokeWidth * scale;
   const valueStrokeRadius = knobRadius + knobStrokeWidth * 0.25;
   const valueStrokeCircumference = 2 * Math.PI * valueStrokeRadius;
   const strokeLineCap = "butt";
@@ -63,7 +63,7 @@ export default function ConcentricKnob(props) {
             cx={center}
             cy={center}
             fill="transparent"
-            stroke={theme.valueContourColor}
+            stroke={theme.valueStrokeColor}
             strokeWidth={valueStrokeWidth}
             strokeLinecap={strokeLineCap}
             strokeDasharray={valueStrokeCircumference}
