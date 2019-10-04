@@ -18,7 +18,7 @@ export default function BlindfoldKnob(props) {
   const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
-  const scale = props.scale == null ? 1 : props.scale;
+  const scale = theme.defaultScale * (props.scale == null ? 1 : props.scale);
   const size = styles.DEFAULT_SIZE * scale;
   const center = size / 2;
   const radius = size / 2;

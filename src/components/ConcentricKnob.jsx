@@ -20,7 +20,7 @@ export default function ConcentricKnob(props) {
   const title = props.title;
   const tooltip = props.tooltip;
   const formatter = props.formatter || ((value) => Math.floor(value * 100) + '%');
-  const scale = props.scale == null ? 1 : props.scale;
+  const scale = theme.defaultScale * (props.scale == null ? 1 : props.scale);
   const size = styles.DEFAULT_SIZE * scale;
   const center = size / 2;
   const knobContourWidth = 12 * scale;
