@@ -1,4 +1,5 @@
 /* eslint no-useless-concat: "off" */
+/* eslint no-template-curly-in-string: "off" */
 
 import React, { useState, useContext } from 'react';
 import ThemeContext from './components/ThemeContext';
