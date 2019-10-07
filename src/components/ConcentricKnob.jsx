@@ -32,7 +32,7 @@ export default function ConcentricKnob(props) {
   const strokeLineCap = "butt";
   return (
     <div>
-      <header style={styles.header(scale, theme)}>
+      <header style={styles.header(scale, props, theme)}>
         {title}
       </header>
       <div style={styles.centered}>

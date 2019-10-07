@@ -1,8 +1,8 @@
 export const DEFAULT_SIZE = 120;
 
-export const header = (scale, theme) => ({
+export const header = (scale, props, theme) => ({
   textAlign: 'center',
-  color: theme.headerTextColor,
+  color: props.headerTextColor || theme.headerTextColor,
   fontSize: 22 * scale,
   marginBottom: 8 * scale,
 });
