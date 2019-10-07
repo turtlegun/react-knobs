@@ -10,12 +10,12 @@ import BlindfoldKnob from './components/BlindfoldKnob';
 import examples from './examples';
 
 const KNOB_PRESETS = [
-  { Component: FullonKnob, title: 'fullon-butt', strokeLineCap: 'butt' },
-  { Component: FullonKnob, title: 'fullon-round', strokeLineCap: 'round' },
-  { Component: MidlaneKnob, title: 'midlane-butt', strokeLineCap: 'butt' },
-  { Component: MidlaneKnob, title: 'midlane-round', strokeLineCap: 'round' },
-  { Component: ConcentricKnob, title: 'concentric' },
-  { Component: BlindfoldKnob, title: 'blindfold' },
+  { Component: FullonKnob, title: 'Fb', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], strokeLineCap: 'butt' },
+  { Component: FullonKnob, title: 'Fr', valueStrokeColors: ['#D1F26D', '#B6D94C', '#9BBF30'], strokeLineCap: 'round' },
+  { Component: MidlaneKnob, title: 'Mb', valueStrokeColors: ['#669EFF', '#4580E6', '#2965CC'], strokeLineCap: 'butt' },
+  { Component: MidlaneKnob, title: 'Mr', valueStrokeColors: ['#AD99FF', '#9179F2', '#7157D9'], strokeLineCap: 'round' },
+  { Component: ConcentricKnob, title: 'Co', valueStrokeColors: ['#2EE6D6', '#14CCBD', '#00B3A4'], },
+  { Component: BlindfoldKnob, title: 'Bl', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], },
 ];
 
 const AppContainer = styled.div`
@@ -83,11 +83,19 @@ const Tab = styled.div`
 
 const KnobsContainer = styled.div`
   display: ${props => props.visible ? 'grid' : 'none'};
-  grid: 33% 33% 33% / 40% 40%;
+  grid: 33% 33% 33% / 50% 50%;
   width: 100%;
   height: 100%;
   padding: 60px;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+`;
+
+const KnobsGroup = styled.div`
+  display: grid;
+  grid: auto / auto auto auto auto;
+  grid-gap: 5px;
   align-items: center;
   justify-content: center;
 `;
@@ -143,14 +151,18 @@ export default function () {
           </Tab>
         </TabsContainer>
         <KnobsContainer visible={activeTab === 'quick-demo'}>
-          {KNOB_PRESETS.map(({ Component, ...props }, index) => (
-            <Centered key={props.title}>
-              <Component
-                {...props}
-                value={knobValues[index]}
-                onChange={(value) => handleKnobProgressChange(index, value)}
-              />
-            </Centered>
+          {KNOB_PRESETS.map(({ Component, valueStrokeColors, ...props }, i) => (
+            <KnobsGroup key={props.title}>
+              {[0.33, 0.66, 1].map((scale, j) => (
+                <Component
+                  {...props}
+                  scale={scale}
+                  valueStrokeColor={valueStrokeColors[j]}
+                  value={knobValues[i]}
+                  onChange={(value) => handleKnobProgressChange(i, value)}
+                />)
+              )}
+            </KnobsGroup>
           ))}
         </KnobsContainer>
         <ExamplesContainer visible={activeTab === 'code-examples'}>
