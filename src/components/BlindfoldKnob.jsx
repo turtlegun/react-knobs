@@ -43,7 +43,7 @@ export default function BlindfoldKnob(props) {
             r={radius}
             cx={center}
             cy={center}
-            fill={theme.knobColor}
+            fill={props.knobColor || theme.knobColor}
             transform={`rotate(135 ${center} ${center})`}
           />
           <line
