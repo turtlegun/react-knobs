@@ -164,9 +164,10 @@ export default function () {
         </TabsContainer>
         <KnobsContainer visible={activeTab === 'quick-demo'}>
           {KNOB_PRESETS.map(({ Component, valueStrokeColors, ...props }, i) => (
-            <KnobsGroup key={props.title}>
+            <KnobsGroup key={i}>
               {[0.33, 0.66, 1].map((scale, j) => (
                 <Component
+                  key={j}
                   {...props}
                   scale={scale}
                   valueStrokeColor={valueStrokeColors[j]}
