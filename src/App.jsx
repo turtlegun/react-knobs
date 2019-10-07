@@ -8,6 +8,7 @@ import MidlaneKnob from './components/MidlaneKnob';
 import ConcentricKnob from './components/ConcentricKnob';
 import BlindfoldKnob from './components/BlindfoldKnob';
 import examples from './examples';
+import useEventListener from './utils/useEventListener';
 
 const KNOB_PRESETS = [
   { Component: FullonKnob, title: 'Fb', valueStrokeColors: ['#669EFF', '#4580E6', '#2965CC'], strokeLineCap: 'butt' },
@@ -123,6 +124,17 @@ export default function () {
   const [knobValues, setKnobValues] = useState(
     Array.from({ length: KNOB_PRESETS.length }, () => Math.random())
   );
+
+  useEventListener('keydown', (event) => {
+    if (event.keyCode === 9) { // TAB
+      event.preventDefault();
+      setActiveTab(
+        activeTab === 'quick-demo'
+          ? 'code-examples'
+          : 'quick-demo'
+      );
+    }
+  });
 
   const handleKnobProgressChange = (index, value) => {
     const newKnobValues = [...knobValues];
