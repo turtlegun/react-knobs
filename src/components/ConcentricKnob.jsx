@@ -73,7 +73,7 @@ export default function ConcentricKnob(props) {
           <text
             x="50%"
             y={center}
-            fontSize={16 * scale}
+            fontSize={(props.valueFontSize || theme.valueFontSize) * scale}
             fill={props.valueTextColor || theme.valueTextColor}
             dominantBaseline="middle"
             textAnchor="middle"
