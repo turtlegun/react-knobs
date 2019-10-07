@@ -17,7 +17,7 @@ import * as styles from './styles';
  */
 export default function FullonKnob(props) {
   const theme = useContext(ThemeContext);
-  const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
+  const { value, handleDoubleClick, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
   const formatter = props.formatter || ((value) => Math.floor(value * 100) + '%');
@@ -40,6 +40,7 @@ export default function FullonKnob(props) {
         <svg
           width={size}
           height={size}
+          onDoubleClick={handleDoubleClick}
           onMouseDown={handleMouseDown}
           style={styles.unselectable}
           data-testid="knob"

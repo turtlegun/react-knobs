@@ -15,7 +15,7 @@ import * as styles from './styles';
  */
 export default function BlindfoldKnob(props) {
   const theme = useContext(ThemeContext);
-  const { value, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
+  const { value, handleDoubleClick, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
   const scale = theme.defaultScale * (props.scale == null ? 1 : props.scale);
@@ -32,6 +32,7 @@ export default function BlindfoldKnob(props) {
         <svg
           width={size}
           height={size}
+          onDoubleClick={handleDoubleClick}
           onMouseDown={handleMouseDown}
           style={styles.unselectable}
           data-testid="knob"

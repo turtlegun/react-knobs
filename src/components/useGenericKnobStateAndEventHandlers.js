@@ -10,6 +10,16 @@ export default function (props) {
   const isUncontrolled = props.value === undefined;
   const value = isUncontrolled ? uncontrolledValue : props.value;
 
+  const handleDoubleClick = () => {
+    const newValue = props.defaultValue || 0;
+    if (isUncontrolled) {
+      setUncontrolledValue(newValue);
+    }
+    if (props.onChange) {
+      props.onChange(newValue);
+    }
+  }
+
   const handleMouseDown = (event) => {
     document.body.style.cursor = 'none';
     setIsDragging(true);
@@ -45,5 +55,5 @@ export default function (props) {
     };
   }, [handleMouseUp, handleMouseMove]);
 
-  return { value, handleMouseDown };
+  return { value, handleDoubleClick, handleMouseDown };
 };
