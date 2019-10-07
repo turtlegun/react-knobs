@@ -1,12 +1,5 @@
-import { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react';
-
-function useEventCallback(fn) {
-  let ref = useRef();
-  useLayoutEffect(() => {
-    ref.current = fn;
-  });
-  return useMemo(() => (...args) => (0, ref.current)(...args), []);
-}
+import { useState, useEffect } from 'react';
+import useEventCallback from '../utils/useEventCallback';
 
 export default function (props) {
   const [isDragging, setIsDragging] = useState(false);
