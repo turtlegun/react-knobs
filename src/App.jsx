@@ -10,10 +10,10 @@ import BlindfoldKnob from './components/BlindfoldKnob';
 import examples from './examples';
 
 const KNOB_PRESETS = [
-  { Component: FullonKnob, title: 'Fb', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], strokeLineCap: 'butt' },
-  { Component: FullonKnob, title: 'Fr', valueStrokeColors: ['#D1F26D', '#B6D94C', '#9BBF30'], strokeLineCap: 'round' },
-  { Component: MidlaneKnob, title: 'Mb', valueStrokeColors: ['#669EFF', '#4580E6', '#2965CC'], strokeLineCap: 'butt' },
-  { Component: MidlaneKnob, title: 'Mr', valueStrokeColors: ['#AD99FF', '#9179F2', '#7157D9'], strokeLineCap: 'round' },
+  { Component: FullonKnob, title: 'Fb', valueStrokeColors: ['#669EFF', '#4580E6', '#2965CC'], strokeLineCap: 'butt' },
+  { Component: FullonKnob, title: 'Fr', valueStrokeColors: ['#AD99FF', '#9179F2', '#7157D9'], strokeLineCap: 'round' },
+  { Component: MidlaneKnob, title: 'Mb', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], strokeLineCap: 'butt' },
+  { Component: MidlaneKnob, title: 'Mr', valueStrokeColors: ['#D1F26D', '#B6D94C', '#9BBF30'], strokeLineCap: 'round' },
   { Component: ConcentricKnob, title: 'Co', valueStrokeColors: ['#2EE6D6', '#14CCBD', '#00B3A4'], },
   { Component: BlindfoldKnob, title: 'Bl', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], },
 ];
