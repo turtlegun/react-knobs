@@ -2,7 +2,7 @@ import React from 'react';
 
 export default React.createContext({
   knobColor: 'black',
-  valueStrokeColor: '#3FA9F5',
+  valueStrokeColor: '#4580E6',
   headerTextColor: 'black',
   valueTextColor: 'black',
   headerFontSize: 22,
