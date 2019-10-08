@@ -1,10 +1,10 @@
 {
   "name": "react-knobs",
   "version": "1.0.0",
-  "description": "SVG based knobs for React applications",
-  "author": "apo91",
+  "description": "SVG-based knobs for React applications",
+  "author": "Andrii Polishchuk <andrii91@protonmail.com> (https://github.com/apo91)",
   "license": "MIT",
-  "repository": "apo91/react-knobs",
+  "repository": "github:apo91/react-knobs",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
