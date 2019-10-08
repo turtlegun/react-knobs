@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-knobs/static/css/main.61ca30cf.chunk.css",
+    "main.js": "/react-knobs/static/js/main.51f77874.chunk.js",
+    "main.js.map": "/react-knobs/static/js/main.51f77874.chunk.js.map",
+    "runtime-main.js": "/react-knobs/static/js/runtime-main.db3f4191.js",
+    "runtime-main.js.map": "/react-knobs/static/js/runtime-main.db3f4191.js.map",
+    "static/js/2.9513597f.chunk.js": "/react-knobs/static/js/2.9513597f.chunk.js",
+    "static/js/2.9513597f.chunk.js.map": "/react-knobs/static/js/2.9513597f.chunk.js.map",
+    "index.html": "/react-knobs/index.html",
+    "precache-manifest.50808404f1c89a06c0c5d97dfa8d817a.js": "/react-knobs/precache-manifest.50808404f1c89a06c0c5d97dfa8d817a.js",
+    "service-worker.js": "/react-knobs/service-worker.js",
+    "static/css/main.61ca30cf.chunk.css.map": "/react-knobs/static/css/main.61ca30cf.chunk.css.map"
+  }
+}
