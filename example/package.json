@@ -5,19 +5,23 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "prop-types": "^15.7.2",
+    "prop-types": "file:../node_modules/prop-types",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
-    "react-scripts": "file:../node_modules/react-scripts",
     "react-syntax-highlighter": "^11.0.2",
     "styled-components": "^4.4.0",
     "react-knobs": "file:.."
+  },
+  "devDependencies": {
+    "react-scripts": "file:../node_modules/react-scripts",
+    "source-map-explorer": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": {
     "production": [
