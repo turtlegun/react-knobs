@@ -3,10 +3,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styled, { css } from 'styled-components';
 
-import FullonKnob from './components/FullonKnob';
-import MidlaneKnob from './components/MidlaneKnob';
-import ConcentricKnob from './components/ConcentricKnob';
-import BlindfoldKnob from './components/BlindfoldKnob';
+import { FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob } from 'react-knobs';
 import examples from './examples';
 import useEventListener from './utils/useEventListener';
 

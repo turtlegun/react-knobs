@@ -2,11 +2,7 @@
 /* eslint no-template-curly-in-string: "off" */
 
 import React, { useState, useContext } from 'react';
-import ThemeContext from './components/ThemeContext';
-import FullonKnob from './components/FullonKnob';
-import MidlaneKnob from './components/MidlaneKnob';
-import ConcentricKnob from './components/ConcentricKnob';
-import BlindfoldKnob from './components/BlindfoldKnob';
+import { FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob, ThemeContext } from 'react-knobs';
 
 export default [
   {

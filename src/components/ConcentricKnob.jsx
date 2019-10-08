@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ThemeContext from './ThemeContext';
+import ThemeContext from '../ThemeContext';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
 import * as styles from './styles';
 
