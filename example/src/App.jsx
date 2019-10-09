@@ -3,18 +3,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styled, { css } from 'styled-components';
 
-import { FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob } from 'react-knobs';
-import examples from './examples';
 import useEventListener from './utils/useEventListener';
-
-const KNOB_PRESETS = [
-  { Component: FullonKnob, title: 'Fb', valueStrokeColors: ['#669EFF', '#4580E6', '#2965CC'], strokeLineCap: 'butt' },
-  { Component: FullonKnob, title: 'Fr', valueStrokeColors: ['#AD99FF', '#9179F2', '#7157D9'], strokeLineCap: 'round' },
-  { Component: MidlaneKnob, title: 'Mb', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], strokeLineCap: 'butt' },
-  { Component: MidlaneKnob, title: 'Mr', valueStrokeColors: ['#D1F26D', '#B6D94C', '#9BBF30'], strokeLineCap: 'round' },
-  { Component: ConcentricKnob, title: 'Co', valueStrokeColors: ['#2EE6D6', '#14CCBD', '#00B3A4'], },
-  { Component: BlindfoldKnob, title: 'Bl', valueStrokeColors: ['#FFC940', '#F2B824', '#D99E0B'], },
-];
+import KNOB_PRESETS from './quickDemoKnobPresets';
+import EXAMPLES from './examples';
 
 const AppContainer = styled.div`
   display: grid;
@@ -160,12 +151,13 @@ export default function () {
           </Tab>
         </TabsContainer>
         <KnobsContainer visible={activeTab === 'quick-demo'}>
-          {KNOB_PRESETS.map(({ Component, valueStrokeColors, ...props }, i) => (
+          {KNOB_PRESETS.map(({ Component, valueStrokeColors, tooltip, ...props }, i) => (
             <KnobsGroup key={i}>
               {[0.33, 0.66, 1].map((scale, j) => (
                 <Component
                   key={j}
                   {...props}
+                  tooltip={tooltip.replace('{valueStrokeColor}', valueStrokeColors[j])}
                   scale={scale}
                   valueStrokeColor={valueStrokeColors[j]}
                   value={knobValues[i]}
@@ -176,7 +168,7 @@ export default function () {
           ))}
         </KnobsContainer>
         <ExamplesContainer visible={activeTab === 'code-examples'}>
-          {examples.map(({ code, codeFontSize, Component }, index) => (
+          {EXAMPLES.map(({ code, codeFontSize, Component }, index) => (
             <React.Fragment key={index}>
               <Centered>
                 <Component />
