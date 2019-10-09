@@ -113,10 +113,10 @@ export default [
       '// An ultimate example' + '\n' +
       'function ExampleKnob() {' + '\n' +
       '  const theme = useContext(ThemeContext);' + '\n' +
-      '  const [knobStrokeWidth, setKnobStrokeWidth] = useState(0.5);' + '\n' +
-      '  const [valueStrokeWidth, setValueStrokeWidth] = useState(0.5);' + '\n' +
-      '  const [red, setRed] = useState(0.5);' + '\n' +
-      '  const [green, setGreen] = useState(0.5);' + '\n' +
+      '  const [knobStrokeWidth, setKnobStrokeWidth] = useState(1);' + '\n' +
+      '  const [valueStrokeWidth, setValueStrokeWidth] = useState(0);' + '\n' +
+      '  const [red, setRed] = useState(1);' + '\n' +
+      '  const [green, setGreen] = useState(1);' + '\n' +
       '  const [blue, setBlue] = useState(0.5);' + '\n' +
       '  const themeWithValueStrokeColor = ([r, g, b], theme) => ({' + '\n' +
       '    ...theme,' + '\n' +
@@ -169,10 +169,10 @@ export default [
     codeFontSize: 12,
     Component: () => {
       const theme = useContext(ThemeContext);
-      const [knobStrokeWidth, setKnobStrokeWidth] = useState(0.5);
-      const [valueStrokeWidth, setValueStrokeWidth] = useState(0.5);
-      const [red, setRed] = useState(0.5);
-      const [green, setGreen] = useState(0.5);
+      const [knobStrokeWidth, setKnobStrokeWidth] = useState(1);
+      const [valueStrokeWidth, setValueStrokeWidth] = useState(0);
+      const [red, setRed] = useState(1);
+      const [green, setGreen] = useState(1);
       const [blue, setBlue] = useState(0.5);
       const themeWithValueStrokeColor = ([r, g, b], theme) => ({
         ...theme,
