@@ -157,7 +157,9 @@ export default function () {
                 <Component
                   key={j}
                   {...props}
-                  tooltip={tooltip.replace('{valueStrokeColor}', valueStrokeColors[j])}
+                  tooltip={tooltip
+                    .replace('{valueStrokeColor}', valueStrokeColors[j])
+                    .replace('{scale}', scale)}
                   scale={scale}
                   valueStrokeColor={valueStrokeColors[j]}
                   value={knobValues[i]}

@@ -9,6 +9,7 @@ export default [
     tooltip:
       '<FullonKnob ' + '\n' +
       '  title="Fb"' + '\n' +
+      '  scale={{scale}}' + '\n' +
       '  valueStrokeColor="{valueStrokeColor}"' + '\n' +
       '  strokeLineCap="butt"' + '\n' +
       '/>',
@@ -21,6 +22,7 @@ export default [
     tooltip:
       '<FullonKnob ' + '\n' +
       '  title="Fr"' + '\n' +
+      '  scale={{scale}}' + '\n' +
       '  valueStrokeColor="{valueStrokeColor}"' + '\n' +
       '  strokeLineCap="round"' + '\n' +
       '/>',
@@ -33,6 +35,7 @@ export default [
     tooltip:
       '<MidlaneKnob ' + '\n' +
       '  title="Mb"' + '\n' +
+      '  scale={{scale}}' + '\n' +
       '  valueStrokeColor="{valueStrokeColor}"' + '\n' +
       '  strokeLineCap="butt"' + '\n' +
       '/>',
@@ -45,6 +48,7 @@ export default [
     tooltip:
       '<MidlaneKnob ' + '\n' +
       '  title="Mr"' + '\n' +
+      '  scale={{scale}}' + '\n' +
       '  valueStrokeColor="{valueStrokeColor}"' + '\n' +
       '  strokeLineCap="round"' + '\n' +
       '/>',
@@ -56,6 +60,7 @@ export default [
     tooltip:
       '<ConcentricKnob ' + '\n' +
       '  title="Co"' + '\n' +
+      '  scale={{scale}}' + '\n' +
       '  valueStrokeColor="{valueStrokeColor}"' + '\n' +
       '/>',
   },
@@ -66,6 +71,7 @@ export default [
     tooltip:
       '<BlindfoldKnob ' + '\n' +
       '  title="Bl"' + '\n' +
+      '  scale={{scale}}' + '\n' +
       '/>',
   },
 ];
