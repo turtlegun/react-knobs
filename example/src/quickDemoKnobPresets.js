@@ -1,3 +1,5 @@
+/* eslint no-useless-concat: "off" */
+
 import { FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob } from 'react-knobs';
 
 export default [
