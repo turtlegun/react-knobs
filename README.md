@@ -13,15 +13,21 @@ npm install --save react-knobs
 ## Usage
 
 ```jsx
-import React, { useState } from 'react'
-import { FullonKnob } from 'react-knobs'
+import React from 'react';
+import { FullonKnob /*, MidlaneKnob, ConcentricKnob, BlindfoldKnob, ThemeContext */ } from 'react-knobs';
 
-function ExampleComponent() {
-  const [state, setState] = useState(0.33);
+function VolumeKnob(props) {
   return (
     <FullonKnob
-      value={state}
-      onChange={(newValue) => setState(newValue)}
+      title="Volume"
+      value={props.value}
+      defaultValue={0.825}
+      onChange={props.onChange}
+      formatter={(value) =>
+        value < 0.01
+          ? '-inf'
+          : Math.round(-64 + value * 70) + ' dB'
+      }
     />
   );
 }
