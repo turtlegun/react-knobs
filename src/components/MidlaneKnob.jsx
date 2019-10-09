@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import ThemeContext from '../ThemeContext';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
 import * as styles from './styles';
@@ -94,3 +95,21 @@ export default function MidlaneKnob(props) {
     </div>
   );
 }
+
+MidlaneKnob.propTypes = {
+  value: PropTypes.number,
+  defaultValue: PropTypes.number,
+  scale: PropTypes.number,
+  title: PropTypes.string,
+  tooltip: PropTypes.string,
+  knobStrokeWidth: PropTypes.number,
+  valueStrokeWidth: PropTypes.number,
+  headerFontSize: PropTypes.number,
+  valueFontSize: PropTypes.number,
+  knobColor: PropTypes.string,
+  valueStrokeColor: PropTypes.string,
+  valueTextColor: PropTypes.string,
+  strokeLineCap: PropTypes.oneOf(['butt', 'round', 'square']),
+  formatter: PropTypes.func,
+  onChange: PropTypes.func,
+};

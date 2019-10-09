@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import ThemeContext from '../ThemeContext';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
 import * as styles from './styles';
@@ -63,3 +64,14 @@ export default function BlindfoldKnob(props) {
     </div>
   );
 }
+
+BlindfoldKnob.propTypes = {
+  value: PropTypes.number,
+  defaultValue: PropTypes.number,
+  scale: PropTypes.number,
+  title: PropTypes.string,
+  tooltip: PropTypes.string,
+  headerFontSize: PropTypes.number,
+  knobColor: PropTypes.string,
+  onChange: PropTypes.func,
+};
