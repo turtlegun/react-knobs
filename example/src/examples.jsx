@@ -1,8 +1,8 @@
 /* eslint no-useless-concat: "off" */
 /* eslint no-template-curly-in-string: "off" */
 
-import React, { useState, useContext } from 'react';
-import { FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob, ThemeContext } from 'react-knobs';
+import React, { useState } from 'react';
+import { FullonKnob, MidlaneKnob, ConcentricKnob, BlindfoldKnob, ThemeContext, useThemeContext } from 'react-knobs';
 
 export default [
   {
@@ -112,7 +112,7 @@ export default [
     code:
       '// An ultimate example' + '\n' +
       'function ExampleKnob() {' + '\n' +
-      '  const theme = useContext(ThemeContext);' + '\n' +
+      '  const theme = useThemeContext();' + '\n' +
       '  const [knobStrokeWidth, setKnobStrokeWidth] = useState(1);' + '\n' +
       '  const [valueStrokeWidth, setValueStrokeWidth] = useState(0);' + '\n' +
       '  const [red, setRed] = useState(1);' + '\n' +
@@ -168,7 +168,7 @@ export default [
       '}',
     codeFontSize: 12,
     Component: () => {
-      const theme = useContext(ThemeContext);
+      const theme = useThemeContext();
       const [knobStrokeWidth, setKnobStrokeWidth] = useState(1);
       const [valueStrokeWidth, setValueStrokeWidth] = useState(0);
       const [red, setRed] = useState(1);

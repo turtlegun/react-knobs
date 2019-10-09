@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ThemeContext from '../ThemeContext';
+import { useThemeContext } from '../ThemeContext';
 import useGenericKnobStateAndEventHandlers from './useGenericKnobStateAndEventHandlers';
 import * as styles from './styles';
 
@@ -23,7 +23,7 @@ import * as styles from './styles';
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */
 export default function FullonKnob(props) {
-  const theme = useContext(ThemeContext);
+  const theme = useThemeContext();
   const { value, handleDoubleClick, handleMouseDown } = useGenericKnobStateAndEventHandlers(props);
   const title = props.title;
   const tooltip = props.tooltip;
