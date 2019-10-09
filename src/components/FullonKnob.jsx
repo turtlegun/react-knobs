@@ -11,7 +11,13 @@ import * as styles from './styles';
  * @param {number} [props.scale] Scale multiplier for layout and fonts
  * @param {string} [props.title] Title of the parameter controlled by knob
  * @param {string} [props.tooltip] Text to show on hover
- * @param {('butt'|'round'|'square')} [props.strokeLineCap] Name of the line cap type used in value contour
+ * @param {number} [props.knobStrokeWidth] (theme) Width of the stroke of the knob contour
+ * @param {number} [props.headerFontSize] (theme) Size of the knob header font
+ * @param {number} [props.valueFontSize] (theme) Size of the value label font
+ * @param {string} [props.knobColor] (theme) Color of the knob contour
+ * @param {string} [props.valueStrokeColor] (theme) Color of the stroke of the value contour
+ * @param {string} [props.valueTextColor] (theme) Color of the value label text
+ * @param {('butt'|'round'|'square')} [props.strokeLineCap] (theme) Name of the line cap type used in value contour
  * @param {function} [props.formatter] Function taking value and returning text to display inside the knob
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */

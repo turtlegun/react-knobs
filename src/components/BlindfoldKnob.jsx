@@ -11,6 +11,8 @@ import * as styles from './styles';
  * @param {number} [props.scale] Scale multiplier for layout and fonts
  * @param {string} [props.title] Title of the parameter controlled by knob
  * @param {string} [props.tooltip] Text to show on hover
+ * @param {number} [props.headerFontSize] (theme) Size of the knob header font
+ * @param {string} [props.knobColor] (theme) Color of the knob contour
  * @param {function} props.onChange Callback called with a new value when the knob is rotated
  */
 export default function BlindfoldKnob(props) {
